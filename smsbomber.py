@@ -146,7 +146,7 @@ while True:
              tel_numbers = [tel_no, tel_no2, tel_no3, tel_no4, tel_no5]
              bos_olmayan = len([x for x in tel_numbers if x != "bos"])
              keree = kere * bos_olmayan
-        sms = SendSms(tel_no, tel_no2, tel_no3, tel_no4, tel_no5, mail)
+        sms = SendSms(tel_no, mail)
         if isinstance(kere, int):
                   while sms.adet < kere:
                       for attribute in dir(SendSms):
