@@ -3,43 +3,47 @@ from time import sleep
 from os import system
 from requests import get
 import urllib3
+
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
+
 r = get("https://raw.githubusercontent.com/yildirimlord/smsnoktapy/main/sms.py").text
+
 with open("sms.py", "r", encoding="utf-8") as f:
     read = f.read()
+
 if read == r:
     pass
 else:
     print(Fore.RED + "Güncelleme yapılıyor...")
     with open("sms.py", "w", encoding="utf-8") as f:
         f.write(r)
+
 from sms import SendSms
+
 servisler_sms = []
+
 for attribute in dir(SendSms):
     attribute_value = getattr(SendSms, attribute)
     if callable(attribute_value):
         if attribute.startswith('__') == False:
-            servisler_sms.append(attribute)    
-while 1:
+            servisler_sms.append(attribute)
+
+while True:
     system("cls||clear")
     print("""{}
-  
-▀▀▀▀▀▀▀▀▀▀▀▀▀▀
-▀ ▀
-▀ B T C - B O M B ▀
-▀ ▀
-▀▀▀▀▀▀▀▀▀▀▀▀▀▀          
+ YILDIRIM SMS BOMBER!!       
 
     Sms: {}                                      
     """.format(Fore.LIGHTRED_EX, len(servisler_sms), Style.RESET_ALL, Fore.CYAN))
-    print(Fore.LIGHTGREEN_EX+"{/} "+Style.RESET_ALL+"Katkıda bulunanlar: "+Fore.LIGHTGREEN_EX+Style.BRIGHT+"edited by ICARDI, Yıldırım\n"+Style.RESET_ALL)
+    print(Fore.LIGHTGREEN_EX + "{/} " + Style.RESET_ALL + "Made by " + Fore.LIGHTGREEN_EX + Style.BRIGHT + "yıldırımlord\n" + Style.RESET_ALL)
     try:
-        menu = int(input(Fore.LIGHTMAGENTA_EX + " 1- SMS Gönder\n 2- Çıkış\n\n" + Fore.LIGHTYELLOW_EX + " Seçim: "))
+        menu = int(input(Fore.LIGHTMAGENTA_EX + " 1- SMS Gönder\n 2- İletişim\n 3- Çıkış\n\n" + Fore.LIGHTYELLOW_EX + " Seçim: "))
     except ValueError:
         system("cls||clear")
         print(Fore.LIGHTRED_EX + "Hatalı giriş yaptınız. Tekrar deneyiniz.")
         sleep(3)
         continue
+
     if menu == 1:
         system("cls||clear")
         try:
@@ -163,7 +167,17 @@ while 1:
                               if attribute.startswith('__') == False:
                                exec("sms."+attribute+"()")
                                sleep(aralik)
+        pass
     elif menu == 2:
+        system("cls||clear")
+        print(Fore.LIGHTYELLOW_EX + "İletişim bilgileri:\n\n"
+              + Fore.LIGHTGREEN_EX + "Discord: yıldırımlord#4444 | https://discord.gg/m7wAfPgeNx\n"
+              + Fore.LIGHTGREEN_EX + "Telegram: https://t.me/krallikbuy\n")
+    
+        print(Fore.LIGHTGREEN_EX + "{/} " + Style.RESET_ALL + "Made by " + Fore.LIGHTMAGENTA_EX + Style.BRIGHT + "yıldırımlord\n" + Style.RESET_ALL)
+        print(Fore.LIGHTRED_EX + "Menüye dönmek için 'enter' tuşuna basınız..")
+        input()
+    elif menu == 3:
         system("cls||clear")
         print(Fore.LIGHTRED_EX + "Çıkış yapılıyor...")
         break
